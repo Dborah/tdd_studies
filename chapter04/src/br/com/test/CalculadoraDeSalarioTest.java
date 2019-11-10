@@ -37,7 +37,7 @@ public class CalculadoraDeSalarioTest {
 		assertEquals(4000.0 * 0.8, salario, 0.00001);
 	}
 	
-	/*
+	
 	//Testa agora dbas que recebem abaixo do limite (R$ 1500,00) e tem desconto de 15%.
 	@Test
 	public void deveCalcularSalarioParaDBAsComSalarioAbaixoDoLimite() {
@@ -48,5 +48,15 @@ public class CalculadoraDeSalarioTest {
 		double salario = calculadora.calculaSalario(dba);
 		assertEquals(500.0 * 0.85, salario, 0.00001);
 	}
-	*/
+	
+	@Test
+	public void deveCalcularSalarioParaDBAsComSalarioAcimaDoLimite() {
+		CalculadoraDeSalario calculadora = new CalculadoraDeSalario();
+		Funcionario dba = new Funcionario("Mauricio", 4500.0, Cargo.DBA);
+		
+		double salario = calculadora.calculaSalario(dba);
+		
+		assertEquals(4500.0 * 0.75, salario, 0.00001);
+	}
+	
 }//class CalculadoraDeSalarioTest
